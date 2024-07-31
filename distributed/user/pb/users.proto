@@ -1,0 +1,151 @@
+syntax = "proto3";
+
+option go_package ="./users";
+
+package users;
+
+// ------------------------------------ 
+// Messages
+// ------------------------------------ 
+
+//--------------------------------user--------------------------------
+message User {
+  int64 id = 1; //id
+  string nickname = 2; //nickname
+  string mobile = 3; //mobile
+  string email = 4; //email
+  string password = 5; //password
+  string avatar = 6; //avatar
+  int64 birthday = 7; //生日
+  string constellation = 8; //星座
+  int64 sex = 9; //1:男 2:女
+  string location = 10; //所在位置
+  int64 privilege = 11; //10:普通用户 20:体验用户 30:付费用户 50:点评师 100:点评大佬
+  string note = 12; //note
+  int64 batch = 13; //batch
+  string code = 14; //邀请码
+  int64 vaildPeroid = 15; //有效期
+  int64 createdAt = 16; //createdAt
+  int64 updatedAt = 17; //updatedAt
+  int64 deletedAt = 18; //deletedAt
+  string alipayNickname = 19; //支付宝名称
+}
+
+message AddUserReq {
+  string nickname = 1; //nickname
+  string mobile = 2; //mobile
+  string email = 3; //email
+  string password = 4; //password
+  string avatar = 5; //avatar
+  int64 birthday = 6; //生日
+  string constellation = 7; //星座
+  int64 sex = 8; //1:男 2:女
+  string location = 9; //所在位置
+  int64 privilege = 10; //10:普通用户 20:体验用户 30:付费用户 50:点评师 100:点评大佬
+  string note = 11; //note
+  int64 batch = 12; //batch
+  string code = 13; //邀请码
+  int64 vaildPeroid = 14; //有效期
+  int64 createdAt = 15; //createdAt
+  int64 updatedAt = 16; //updatedAt
+  int64 deletedAt = 17; //deletedAt
+  string alipayNickname = 18; //支付宝名称
+}
+
+message InviteUserReq {
+  string email = 1; //email
+}
+
+message AddUserResp {
+}
+
+message UpdateUserReq {
+  int64 id = 1; //id
+  string nickname = 2; //nickname
+  string mobile = 3; //mobile
+  string email = 4; //email
+  string password = 5; //password
+  string avatar = 6; //avatar
+  int64 birthday = 7; //生日
+  string constellation = 8; //星座
+  int64 sex = 9; //1:男 2:女
+  string location = 10; //所在位置
+  int64 privilege = 11; //10:普通用户 20:体验用户 30:付费用户 50:点评师 100:点评大佬
+  string note = 12; //note
+  int64 batch = 13; //batch
+  string code = 14; //邀请码
+  int64 vaildPeroid = 15; //有效期
+  int64 createdAt = 16; //createdAt
+  int64 updatedAt = 17; //updatedAt
+  int64 deletedAt = 18; //deletedAt
+  string alipayNickname = 19; //支付宝名称
+}
+
+message UpdateUserResp {
+}
+
+message DelUserReq {
+  int64 id = 1; //id
+}
+
+message DelUserResp {
+}
+
+message GetUserByIdReq {
+  int64 id = 1; //id
+}
+message GetUserByCodeReq {
+  string code = 1; //id
+}
+
+message GetUserByIdResp {
+  User user = 1; //user
+}
+
+message SearchUserReq {
+  int64 page = 1; //page
+  int64 limit = 2; //limit
+  int64 id = 3; //id
+  string nickname = 4; //nickname
+  string mobile = 5; //mobile
+  string email = 6; //email
+  string password = 7; //password
+  string avatar = 8; //avatar
+  int64 birthday = 9; //生日
+  string constellation = 10; //星座
+  int64 sex = 11; //1:男 2:女
+  string location = 12; //所在位置
+  int64 privilege = 13; //10:普通用户 20:体验用户 30:付费用户 50:点评师 100:点评大佬
+  string note = 14; //note
+  int64 batch = 15; //batch
+  string code = 16; //邀请码
+  int64 vaildPeroid = 17; //有效期
+  int64 createdAt = 18; //createdAt
+  int64 updatedAt = 19; //updatedAt
+  int64 deletedAt = 20; //deletedAt
+  string alipayNickname = 21; //支付宝名称
+}
+
+message SearchUserResp {
+  repeated User user = 1; //user
+}
+
+
+
+// ------------------------------------ 
+// Rpc Func
+// ------------------------------------ 
+
+service user{ 
+
+	 //-----------------------user----------------------- 
+	 rpc AddUser(AddUserReq) returns (AddUserResp); 
+	 rpc TranAddUser(InviteUserReq) returns (AddUserResp);
+	 rpc TranDelUser(InviteUserReq) returns (AddUserResp);
+	 rpc UpdateUser(UpdateUserReq) returns (UpdateUserResp);
+	 rpc DelUser(DelUserReq) returns (DelUserResp); 
+	 rpc GetUserById(GetUserByIdReq) returns (GetUserByIdResp); 
+	 rpc GetUserByCode(GetUserByCodeReq) returns (GetUserByIdResp);
+	 rpc SearchUser(SearchUserReq) returns (SearchUserResp);
+
+}

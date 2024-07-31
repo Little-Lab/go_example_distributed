@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+option go_package ="./scores";
+
+package scores;
+
+// ------------------------------------ 
+// Messages
+// ------------------------------------ 
+
+//--------------------------------score--------------------------------
+message Score {
+  int64 id = 1; //id
+  int64 userId = 2; //userId
+  int64 score = 3; //score
+}
+
+message AddScoreReq {
+  int64 userId = 1; //userId
+  int64 score = 2; //score
+}
+
+message AddScoreResp {
+}
+
+message UpdateScoreReq {
+  int64 id = 1; //id
+  int64 userId = 2; //userId
+  int64 score = 3; //score
+}
+
+message UpdateScoreResp {
+}
+
+message DelScoreReq {
+  int64 id = 1; //id
+}
+
+message DelScoreResp {
+}
+
+message GetScoreByIdReq {
+  int64 id = 1; //id
+}
+
+message GetScoreByIdResp {
+  Score score = 1; //score
+}
+
+message SearchScoreReq {
+  int64 page = 1; //page
+  int64 limit = 2; //limit
+  int64 id = 3; //id
+  int64 userId = 4; //userId
+  int64 score = 5; //score
+}
+
+message SearchScoreResp {
+  repeated Score score = 1; //score
+}
+
+
+
+// ------------------------------------ 
+// Rpc Func
+// ------------------------------------ 
+
+service score{
+	 //-----------------------score----------------------- 
+	 rpc AddScore(AddScoreReq) returns (AddScoreResp); 
+	 rpc TranIncScore(AddScoreReq) returns (AddScoreResp);
+	 rpc TranDecScore(AddScoreReq) returns (AddScoreResp);
+	 rpc UpdateScore(UpdateScoreReq) returns (UpdateScoreResp);
+	 rpc DelScore(DelScoreReq) returns (DelScoreResp); 
+	 rpc GetScoreById(GetScoreByIdReq) returns (GetScoreByIdResp); 
+	 rpc SearchScore(SearchScoreReq) returns (SearchScoreResp);
+}

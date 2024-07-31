@@ -1,0 +1,23 @@
+syntax = "v1"
+
+info(
+	title: "dtm demo"
+	desc: "dtm 演示"
+	author: "hyx"
+	email: "type email here"
+	version: "type version here"
+)
+
+type InviteReq {
+	Code  string `json:"code"`
+	Email string `json:"email"`
+}
+
+type InviteResp {
+}
+
+service Bff {
+	//邀请好友
+	@handler Invite
+	get /invite (InviteReq) returns (InviteResp)
+}

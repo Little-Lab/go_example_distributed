@@ -1,0 +1,8 @@
+Name: users.rpc
+ListenOn: 0.0.0.0:8081
+DB:
+  DataSource: root:123456@tcp(127.0.0.1:3306)/2010a?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+Etcd:
+  Hosts:
+  - 127.0.0.1:2379
+  Key: users.rpc

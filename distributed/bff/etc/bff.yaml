@@ -1,0 +1,15 @@
+Name: Bff
+Host: 0.0.0.0
+Port: 8888
+
+ScoreSrv:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: scores.rpc
+
+UserSrv:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: users.rpc
